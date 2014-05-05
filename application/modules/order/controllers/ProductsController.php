@@ -531,11 +531,12 @@ class Order_ProductsController extends Zend_Controller_Action
     public function checkoutAction()
     {
         $shoppingCart = Auth_Model_SystemAuth::getInstance()->getAuthVariable('shoppingCart');
-        if ($shoppingCart->getShippingAddressId() == null) {
-            $this->_helper->redirector('confirmcheckout', 'products', 'order');
-        } else {
-            if ($shoppingCart != null && count($shoppingCart->getProducts()) > 0) {
+        if ($shoppingCart != null) {
+            if ($shoppingCart->getShippingAddressId() == null) {
 
+                $this->_helper->redirector('confirmcheckout', 'products', 'order');
+
+            } elseif (count($shoppingCart->getProducts()) > 0) {
                 $shoppingCart->save();
                 $productsList = $shoppingCart->getProducts();
 
@@ -561,8 +562,7 @@ class Order_ProductsController extends Zend_Controller_Action
 
                 Auth_Model_SystemAuth::getInstance()->setAuthVariable('shoppingCart', null);
             }
-
-            $this->_forward('show', 'products', 'order');
         }
+        $this->_forward('show', 'products', 'order');
     }
 }
