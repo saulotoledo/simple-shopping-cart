@@ -31,7 +31,9 @@ Siga os passos a seguir na ordem indicada:
 A senha do usuário é um hash MD5. Apesar de não ser a maneira mais indicada para
 hash de senhas, é assim utilizada apenas para simplificar a inserção de
 registros diretamente no MySQL usando "MD5('senha')" nas queries. A senha
-de testes de todos os usuários é <b>"senha"</b>.
+de testes de todos os usuários é <b>"senha"</b>. Os usuários de teste são
+<b>"usuario1"</b>, <b>"usuario2"</b>, <b>"usuario3"</b> e <b>"usuario4"</b>.
+O <b>"usuario3"</b> está inicialmente inativo.
 
 Se o endereço de e-mail do usuário no banco de dados for válido, ele receberá um
 e-mail com o resumo de seu pedido em sua caixa de entrada após sua realização.
