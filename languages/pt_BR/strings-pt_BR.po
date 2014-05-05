@@ -1,0 +1,307 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: SimpleShoppingCart\n"
+"POT-Creation-Date: 2014-05-04 03:44-0300\n"
+"PO-Revision-Date: 2014-05-04 11:24-0300\n"
+"Last-Translator: Saulo Soares de Toledo <saulotoledo@gmail.com>\n"
+"Language-Team: Saulo Toledo <saulotoledo@gmail.com>\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: translate;_;setLabel;setValue;setMessage;setLegend;"
+"_refresh;append;prepend\n"
+"X-Poedit-SearchPath-0: ../../application\n"
+
+#: ../../application/modules/auth/controllers/AuthController.php:51
+msgid "AUTH_FAILURE_IDENTITY_NOT_FOUND"
+msgstr "O usuário não foi encontrado."
+
+#: ../../application/modules/auth/controllers/AuthController.php:56
+msgid "AUTH_FAILURE_CREDENTIAL_INVALID"
+msgstr "Dados inválidos, verifique seu usuário e sua senha."
+
+#: ../../application/modules/auth/controllers/AuthController.php:62
+#: ../../application/modules/auth/models/SystemAuth.php:89
+msgid "AUTH_FAILURE_USER_INACTIVE"
+msgstr "O usuário está inativo."
+
+#: ../../application/modules/auth/controllers/AuthController.php:65
+#: ../../application/modules/auth/controllers/AuthController.php:93
+msgid "AUTH_GENERAL_FAILURE"
+msgstr "Falha de login."
+
+#: ../../application/modules/auth/models/UserMapper.php:46
+#, php-format
+msgid "AUTH_MODELS_USER_EXCEPTION_ADDUSER_LOGIN_%s_ALREADY_EXISTS"
+msgstr "O login '%s' já existe no sistema."
+
+#: ../../application/modules/auth/models/UserMapper.php:59
+#, php-format
+msgid "AUTH_MODELS_USER_EXCEPTION_ADDUSER_%s_EMAIL_ALREADY_EXISTS"
+msgstr "O e-mail '%s' já existe no sistema."
+
+#: ../../application/modules/auth/models/SessionEntry.php:101
+#, php-format
+msgid "AUTH_MODELS_EXCEPTION_INVALID_TIMEOUT_%s"
+msgstr "O valor '%s' de timeout é inválido. Informe um valor inteiro positivo."
+
+#: ../../application/modules/auth/models/SessionEntry.php:123
+msgid "AUTH_MODELS_SESSION_EXCEPTION_SESSION_MUST_HAVE_A_NAMESPACE"
+msgstr "Informe um namespace para uso com o Zend_Session."
+
+#: ../../application/modules/auth/models/SystemAuth.php:169
+#, php-format
+msgid "AUTH_SYSTEMAUTH_EXCEPTION_INVALID_SESSION_TIMEOUT_%s"
+msgstr "O valor '%s' de timeout é inválido. Informe um valor inteiro positivo."
+
+#: ../../application/modules/auth/forms/Login.php:11
+msgid "AUTH_FORM_LOGIN_LABEL"
+msgstr "Login:"
+
+#: ../../application/modules/auth/forms/Login.php:19
+msgid "AUTH_FORM_PASSWORD_LABEL"
+msgstr "Senha:"
+
+#: ../../application/modules/auth/forms/Login.php:27
+msgid "AUTH_FORM_SUBMIT_LABEL"
+msgstr "Entrar"
+
+#: ../../application/modules/auth/plugins/ManageAuthPlugin.php:76
+msgid "AUTH_USER_IS_LOGGED_OUT"
+msgstr "Ooops! Você precisa fazer login para continuar."
+
+#: ../../application/modules/auth/plugins/ManageAuthPlugin.php:80
+msgid "AUTH_EXPIRED"
+msgstr ""
+"Sua sessão expirou, faça login novamente. Seu carrinho será reiniciado."
+
+#: ../../application/modules/order/controllers/ProductsController.php:182
+#, php-format
+msgid "PRODUCTS_SEARCH_RESULTS_%s_FOR_%s"
+msgstr "Foram encontrados %s resultados para o termo '%s'."
+
+#: ../../application/modules/order/controllers/ProductsController.php:188
+#, php-format
+msgid "PRODUCTS_SEARCH_NOT_FOUND_FOR_%s"
+msgstr "Não foram encontrados resultados para o termo '%s'."
+
+#: ../../application/modules/order/controllers/ProductsController.php:322
+msgid "PRODUCTS_ORDER_PRODUCT_REMOVED"
+msgstr "Produto removido do carrinho com sucesso!"
+
+#: ../../application/modules/order/controllers/ProductsController.php:419
+#: ../../application/modules/order/controllers/ProductsController.php:431
+msgid "CHECKOUT_MAIL_TITLE"
+msgstr "Resumo de pedido"
+
+#: ../../application/modules/order/controllers/ProductsController.php:434
+msgid "PRODUCTS_CHECKOUT_SUCCESS"
+msgstr "Pedido realizado com sucesso! Verifique informações em seu e-mail."
+
+#: ../../application/modules/order/forms/UserAddresses.php:44
+msgid "ORDER_FORM_PERSONAL_CEP_LABEL"
+msgstr "CEP:"
+
+#: ../../application/modules/order/forms/UserAddresses.php:53
+#: ../../application/modules/order/forms/UserAddresses.php:143
+msgid "ORDER_FORM_ERRORMESSAGE_INVALID_CEP"
+msgstr "Informe um CEP válido (formato: 00000-000)."
+
+#: ../../application/modules/order/forms/UserAddresses.php:61
+msgid "ORDER_FORM_PERSONAL_STREET_LABEL"
+msgstr "Rua:"
+
+#: ../../application/modules/order/forms/UserAddresses.php:72
+msgid "ORDER_FORM_PERSONAL_NUMBER_LABEL"
+msgstr "Número:"
+
+#: ../../application/modules/order/forms/UserAddresses.php:83
+msgid "ORDER_FORM_PERSONAL_NUMBER_COMPLEMENT_LABEL"
+msgstr "Complemento:"
+
+#: ../../application/modules/order/forms/UserAddresses.php:92
+msgid "ORDER_FORM_PERSONAL_NEIGHBORHOOD_LABEL"
+msgstr "Bairro:"
+
+#: ../../application/modules/order/forms/UserAddresses.php:103
+msgid "ORDER_FORM_PERSONAL_CITY_LABEL"
+msgstr "Cidade:"
+
+#: ../../application/modules/order/forms/UserAddresses.php:114
+msgid "ORDER_FORM_PERSONAL_STATE_LABEL"
+msgstr "Estado:"
+
+#: ../../application/modules/order/forms/UserAddresses.php:127
+msgid "ORDER_FORM_SAME_ADDRESS_LABEL"
+msgstr "O endereço de entrega é o meu endereço principal"
+
+#: ../../application/modules/order/forms/UserAddresses.php:134
+msgid "ORDER_FORM_SHIPPING_CEP_LABEL"
+msgstr "CEP:"
+
+#: ../../application/modules/order/forms/UserAddresses.php:151
+msgid "ORDER_FORM_SHIPPING_STREET_LABEL"
+msgstr "Rua:"
+
+#: ../../application/modules/order/forms/UserAddresses.php:162
+msgid "ORDER_FORM_SHIPPING_NUMBER_LABEL"
+msgstr "Número:"
+
+#: ../../application/modules/order/forms/UserAddresses.php:173
+msgid "ORDER_FORM_SHIPPING_NUMBER_COMPLEMENT_LABEL"
+msgstr "Complemento:"
+
+#: ../../application/modules/order/forms/UserAddresses.php:182
+msgid "ORDER_FORM_SHIPPING_NEIGHBORHOOD_LABEL"
+msgstr "Bairro:"
+
+#: ../../application/modules/order/forms/UserAddresses.php:193
+msgid "ORDER_FORM_SHIPPING_CITY_LABEL"
+msgstr "Cidade:"
+
+#: ../../application/modules/order/forms/UserAddresses.php:204
+msgid "ORDER_FORM_SHIPPING_STATE_LABEL"
+msgstr "Estado:"
+
+#: ../../application/modules/order/forms/UserAddresses.php:216
+msgid "ORDER_FORM_SUBMIT_LABEL"
+msgstr "Finalizar pedido"
+
+#: ../../application/modules/order/forms/UserAddresses.php:249
+msgid "ORDER_FORM_PERSONAL_GROUP_LABEL"
+msgstr "Endereço principal"
+
+#: ../../application/modules/order/forms/UserAddresses.php:265
+msgid "ORDER_FORM_SHIPPING_GROUP_LABEL"
+msgstr "Endereço de entrega"
+
+#: ../../application/modules/auth/views/scripts/usermenus.phtml:9
+msgid "SEARCH_BUTTON"
+msgstr "Buscar"
+
+#: ../../application/modules/auth/views/scripts/usermenus.phtml:63
+msgid "PRODUCT_QUANTITY_SUFFIX"
+msgstr "item(ns)"
+
+#: ../../application/modules/auth/views/scripts/usermenus.phtml:64
+msgid "PRODUCT_PRICE_SUFFIX"
+msgstr "(cada)"
+
+#: ../../application/modules/auth/views/scripts/usermenus.phtml:79
+msgid "ORDER_CHECKOUT_VERIFY"
+msgstr "Finalizar compra"
+
+#: ../../application/modules/auth/views/scripts/usermenus.phtml:87
+#: ../../application/modules/order/views/scripts/products/confirmcheckout.phtml:120
+msgid "PRODUCTS_ORDER_EMPTY"
+msgstr "O seu carrinho está vazio."
+
+#: ../../application/modules/auth/views/scripts/usermenus.phtml:108
+msgid "MENU_LOGOUT"
+msgstr "Sair"
+
+#: ../../application/modules/auth/views/scripts/auth/login.phtml:2
+msgid "AUTH_AUTH_PAGETITLE_LOGIN"
+msgstr "Login"
+
+#: ../../application/modules/order/views/scripts/pagination.phtml:11
+#: ../../application/modules/order/views/scripts/pagination.phtml:17
+msgid "PAGINATOR_PREVIOUS"
+msgstr "Anterior"
+
+#: ../../application/modules/order/views/scripts/pagination.phtml:41
+#: ../../application/modules/order/views/scripts/pagination.phtml:47
+msgid "PAGINATOR_NEXT"
+msgstr "Próximo"
+
+#: ../../application/modules/order/views/scripts/products/info.phtml:29
+msgid "ORDER_PRODUCTPAGE_FEATURES_LABEL"
+msgstr "Características:"
+
+#: ../../application/modules/order/views/scripts/products/info.phtml:51
+msgid "ORDER_PRODUCTPAGE_QUANTITY_LABEL"
+msgstr "Quantidade:"
+
+#: ../../application/modules/order/views/scripts/products/info.phtml:68
+msgid "ORDER_PRODUCTPAGE_PRODUCT_UPDATE_AT_CART_LABEL"
+msgstr "Atualizar carrinho"
+
+#: ../../application/modules/order/views/scripts/products/info.phtml:71
+msgid "ORDER_PRODUCTPAGE_PRODUCT_ADD_TO_CART_LABEL"
+msgstr "Adicionar ao carrinho"
+
+#: ../../application/modules/order/views/scripts/products/confirmcheckout.phtml:20
+msgid "PAGE_TITLE_MY_CART"
+msgstr "Meu carrinho"
+
+#: ../../application/modules/order/views/scripts/products/confirmcheckout.phtml:27
+#: ../../application/modules/order/views/emails/template.phtml:150
+msgid "ORDER_TABLE_PRODUCT_NAME"
+msgstr "Produto"
+
+#: ../../application/modules/order/views/scripts/products/confirmcheckout.phtml:30
+#: ../../application/modules/order/views/emails/template.phtml:153
+msgid "ORDER_TABLE_PRODUCT_PRICE"
+msgstr "Preço total"
+
+#: ../../application/modules/order/views/scripts/products/confirmcheckout.phtml:33
+#: ../../application/modules/order/views/emails/template.phtml:156
+msgid "ORDER_TABLE_PRODUCT_QUANTITY"
+msgstr "Quantidade"
+
+#: ../../application/modules/order/views/scripts/products/confirmcheckout.phtml:114
+msgid "ORDER_CHECKOUT"
+msgstr "Confirmar compra"
+
+#: ../../application/modules/order/views/scripts/products/show.phtml:12
+msgid "ORDER_BY"
+msgstr "Ordenar por:"
+
+#: ../../application/modules/order/views/scripts/products/show.phtml:16
+msgid "ORDER_BY_VALUE_NAME"
+msgstr "Nome"
+
+#: ../../application/modules/order/views/scripts/products/show.phtml:19
+msgid "ORDER_BY_VALUE_PRICE_ASC"
+msgstr "Menor preço"
+
+#: ../../application/modules/order/views/scripts/products/show.phtml:22
+msgid "ORDER_BY_VALUE_PRICE_DESC"
+msgstr "Maior preço"
+
+#: ../../application/modules/order/views/scripts/products/show.phtml:30
+msgid "ITEMS_PER_PAGE"
+msgstr "Itens por página:"
+
+#: ../../application/views/templates/default.phtml:46
+msgid "PAGE_TITLE_PRODUCTS"
+msgstr "Produtos"
+
+#~ msgid "VIEW_FILTERS_APPLY_FILTERS"
+#~ msgstr "Aplicar filtros"
+
+#~ msgid "PAGINATOR_ITEMS_PER_PAGE"
+#~ msgstr "Itens por página"
+
+#~ msgid "VIEW_FILTERS_GROUP_FILTER_LABEL"
+#~ msgstr "Grupo"
+
+#~ msgid "AUTH_MODEL_SESSION_EXCEPTION_INVALID_USER_ID"
+#~ msgstr "O ID de usuário informado é inválido."
+
+#~ msgid "AUTH_SYSTEMAUTH_FAILURE_USER_INACTIVE"
+#~ msgstr "O usuário está inativo."
+
+#~ msgid "Login:"
+#~ msgstr "Login:"
+
+#~ msgid "Password:"
+#~ msgstr "Senha:"
+
+#~ msgid "Login"
+#~ msgstr "Login"

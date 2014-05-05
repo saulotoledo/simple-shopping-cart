@@ -1,0 +1,53 @@
+<div class="col-md-12 text-center">
+    <?php $limit = $this->getHelper('PaginationControl')->view->paginationLimit; ?>
+
+    <?php if ($this->pageCount): ?>
+        <input type="hidden" id="page" name="page" value="<?php echo $this->current; ?>" />
+
+        <ul class="pagination">
+        <?php if (isset($this->previous)): ?>
+            <li>
+                <a href="javascript:goToPage(<?= $this->previous ?>);">
+                    &larr; <?php echo $this->getHelper('PaginationControl')->view->translator->translate('PAGINATOR_PREVIOUS') ?>
+                </a>
+            </li>
+        <?php else: ?>
+            <li class="disabled">
+                <a href="javascript:;">
+                    &larr; <?php echo $this->getHelper('PaginationControl')->view->translator->translate('PAGINATOR_PREVIOUS') ?>
+                </a>
+            </li>
+        <?php endif; ?>
+
+        <?php foreach ($this->pagesInRange as $page): ?>
+            <?php if ($page != $this->current): ?>
+                <li>
+                    <a href="javascript:goToPage(<?= $page ?>);">
+                        <?= $page; ?>
+                    </a>
+                </li>
+            <?php else: ?>
+                <li class="active">
+                    <a href="javascript:;">
+                        <?= $page; ?>
+                    </a>
+                </li>
+            <?php endif; ?>
+        <?php endforeach; ?>
+
+        <?php if (isset($this->next)): ?>
+            <li>
+                <a href="javascript:goToPage(<?= $this->next ?>);">
+                    <?php echo $this->getHelper('PaginationControl')->view->translator->translate('PAGINATOR_NEXT') ?> &rarr;
+                </a>
+            </li>
+        <?php else: ?>
+            <li class="disabled">
+                <a href="javascript:;">
+                    <?php echo $this->getHelper('PaginationControl')->view->translator->translate('PAGINATOR_NEXT') ?> &rarr;
+                </a>
+            </li>
+        <?php endif; ?>
+        </ul>
+    <?php endif; ?>
+</div>

@@ -1,0 +1,24 @@
+<a href="<?php echo $this->productInfoLink; ?>"
+    class="list-group-item">
+
+    <div class="media">
+        <img class="pull-left media-object img-rounded" width="90"
+            height="90" src="<?php echo $this->baseUrl() . $this->product->image; ?>">
+        <div class="media-body">
+
+            <h4 class="media-heading"><?php echo $this->product->name; ?></h4>
+            <?php
+                foreach ($this->product->categories as $category) {
+                    echo $this->partial('categorybreadcrumb.phtml', array(
+                        'category' => $category
+                    ));
+                }
+            ?>
+            <p class="list-group-item-text"><?php echo $this->product->description; ?></p>
+            <h4 class="list-group-item-text list-price"><?php echo money_format('%n', $this->product->price); ?></h4>
+
+        </div>
+    </div>
+
+
+</a>

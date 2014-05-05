@@ -1,0 +1,159 @@
+.quantity {
+    width: 40px;
+}
+
+.product-image {
+    border: 1px solid #C0C0C0;
+    margin-bottom: 20px;
+}
+
+.navbar-nav>li>.dropdown-menu form {
+    margin: 10px;
+}
+
+form#login .btn {
+    display: block;
+}
+
+form .btn {
+    margin-top: 10px;
+}
+
+    form label {
+        display: block;
+        margin-top: 10px;
+    }
+
+    form .help-inline {
+        color: red;
+    }
+
+.dropdown-menu form .help-inline {
+    color: #FF9191;
+}
+
+.dropdown-menu form label {
+    /*color: #FFFFFF;*/
+    font-weight: normal;
+}
+
+.dropdown-menu .media {
+    margin: 10px;
+    width: 200px;
+}
+
+    .dropdown-menu > p {
+        margin: 10px;
+    }
+
+    .dropdown-menu .media h4 {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .dropdown-menu .media .close {
+        color: #CCCCCC;
+        opacity: 1;
+        filter: alpha(opacity=100);
+    }
+
+    .dropdown-menu .media .media-heading {
+        /*color: #FFFFFF;*/
+    }
+
+    .dropdown-menu .media .media-body p {
+        font-size: 10px;
+    }
+
+ul ul {
+    margin: 0 0 0 18px;
+}
+
+.bs-sidebar label {
+    margin: 10px 0 5px 0;
+}
+
+.bs-sidebar li a {
+    padding: 0;
+}
+
+fieldset {
+    width: 45%;
+    float: left;
+}
+
+    fieldset#fieldset-shipping {
+        padding-left: 30px;
+
+    }
+
+    fieldset#fieldset-sameaddressgroup {
+        float: none;
+        width: 100%;
+        padding-top: 20px;
+    }
+
+        fieldset#fieldset-sameaddressgroup label {
+            float: left;
+        }
+
+        fieldset#fieldset-sameaddressgroup input {
+            margin: 14px;
+            display: block;
+            float: left;
+        }
+
+
+.product-info-quantity .btn-add-update-cart {
+    margin-top: 0;
+}
+
+.thumbnail .breadcrumb,
+.media .breadcrumb
+{
+    padding: 4px 8px;
+    margin-bottom: 5px;
+    font-size: 10px;
+}
+.thumbnail .breadcrumb,
+.media .breadcrumb li
+{
+    margin-right: 5px;
+}
+.thumbnail .breadcrumb,
+.media .breadcrumb span
+{
+    cursor: pointer;
+}
+.thumbnail .list-price,
+.media .list-price
+{
+    color: #2a6496;
+}
+
+.thumbnail h4 {
+    display: block;
+    float: left;
+    height: 60px;
+    overflow: hidden;
+}
+
+.page-header, .page-header h3 {
+    margin: 0;
+    padding: 0;
+}
+.page-header h3 .breadcrumb {
+    padding: 8px 0px;
+    margin-bottom: 20px;
+    list-style: none;
+    background-color: transparent;
+    border-radius: 0;
+}
+
+    .page-header h3 .breadcrumb li {
+        margin-right: 7px;
+    }
+
+        .page-header h3 .breadcrumb li.active a {
+            color: #999999;
+        }

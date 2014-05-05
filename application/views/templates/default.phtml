@@ -1,0 +1,101 @@
+<?php echo $this->doctype() . "\n"; ?>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="robots" content="index, follow" />
+
+<title><?php echo $this->escape($this->siteTitle); ?></title>
+<?php
+    $this->headLink()->appendStylesheet($this->baseUrl() . '/css/bootstrap.min.css');
+    $this->headLink()->appendStylesheet($this->baseUrl() . '/css/bootstrap-theme.min.css');
+    $this->headLink()->appendStylesheet($this->baseUrl() . '/css/font-awesome.min.css');
+    $this->headLink()->appendStylesheet($this->baseUrl() . '/css/jquery-ui/smoothness/jquery-ui-1.10.4.custom.min.css');
+    $this->headLink()->appendStylesheet($this->baseUrl() . '/css/bootstrap-select.min.css');
+
+
+    $this->headLink()->appendStylesheet($this->baseUrl() . '/css/style.css');
+
+    $this->jQuery()
+        ->setLocalPath($this->baseUrl() . '/js/jquery-1.11.0.min.js')
+        ->setUiLocalPath($this->baseUrl() . '/js/jquery-ui-1.10.4.custom.min.js')
+        ->addJavascriptFile($this->baseUrl() . '/js/bootstrap.min.js')
+        ->addJavascriptFile($this->baseUrl() . '/js/bootstrap-select.min.js')
+        ->addJavascriptFile($this->baseUrl() . '/js/scripts.js')
+    ;
+
+    if ($this->isAuth) {
+        $this->headScript()->appendFile($this->baseUrl() . $this->templatePath . '/js/scripts.js');
+    }
+
+    echo $this->jQuery() . "\n";
+    echo $this->headLink() . "\n";
+    echo $this->headScript() . "\n";
+?>
+</head>
+<body role="document">
+
+    <div class="navbar navbar-default navbar-custom" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="<?php echo $this->baseUrl(); ?>"><?php
+                echo $this->translator->translate('PAGE_TITLE_PRODUCTS');
+            ?></a>
+            </div>
+            <div class="navbar-header" id="bs-example-navbar-collapse-1">
+            <?php
+            echo $this->render('usermenus.phtml');
+            ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="container theme-showcase" role="main">
+    <?php
+    if (isset($this->categories)) {
+    ?>
+
+        <div class="col-md-4 column">
+            <div class="well">
+                <?php
+                echo $this->printMenu($this->categories, $this, 'order/products/category/id/');
+                ?>
+            </div>
+        </div>
+    <?php
+    }
+    ?>
+        <div class="col-md-8 column">
+            <?php
+
+            if (isset($this->messageType)) {
+                ?><div id="message"
+                class="alert alert-<?php echo $this->messageType; ?> alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert"
+                    aria-hidden="true">&times;</button>
+                    <?php
+                $message = $this->escape($this->message);
+
+                // Permite o uso de tags HTML básicas nas mensagens:
+                $message = str_replace('&lt;', '<', $message);
+                $message = str_replace('&gt;', '>', $message);
+                $message = str_replace('&quot;', '"', $message);
+
+                echo $message;
+                ?></div><?php
+            }
+
+            ?>
+            <?php echo $this->layout()->content; ?>
+        </div>
+
+    </div>
+    <!-- /.container -->
+    <hr />
+    <footer>
+    </footer>
+</body>
+</html>

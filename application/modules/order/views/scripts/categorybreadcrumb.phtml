@@ -1,0 +1,45 @@
+<ol class="breadcrumb">
+<?php
+$categoryLink = $this->url(array(
+    'module' => 'order',
+    'controller' => 'products',
+    'action' => 'category',
+    'id' => $this->category['id']
+));
+
+if (!isset($this->renderLinks)) {
+    $this->renderLinks = false;
+}
+
+if ($this->renderLinks) {
+    $tag = 'a';
+    $attr = 'href';
+} else {
+    $tag = 'span';
+    $attr = 'data-link';
+}
+
+while (isset($this->category['child'])) {
+?>
+    <li>
+        <<?php echo $tag; ?> <?php echo $attr; ?>="<?php echo $categoryLink; ?>">
+            <?php echo $this->category['name']; ?>
+        </<?php echo $tag; ?>>
+    </li>
+<?php
+    $this->category = $this->category['child'];
+
+    $categoryLink = $this->url(array(
+        'module' => 'order',
+        'controller' => 'products',
+        'action' => 'category',
+        'id' => $this->category['id']
+    ));
+}
+?>
+    <li class="active">
+        <<?php echo $tag; ?> <?php echo $attr; ?>="<?php echo $categoryLink; ?>">
+            <?php echo $this->category['name']; ?>
+        </<?php echo $tag; ?>>
+    </li>
+</ol>

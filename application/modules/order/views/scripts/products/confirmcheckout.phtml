@@ -1,0 +1,124 @@
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+        <?php
+        if ($this->shoppingCart != null) {
+        ?>
+
+        <form action="<?php
+            echo $this->url(array(
+                'module' => 'order',
+                'controller' => 'products',
+                'action' => 'addtocart',
+                'view' => 'confirmcheckout'
+            ));
+        ?>" id="addToCartForm" method="post">
+            <input type="hidden" name="id" value="" />
+            <input type="hidden" name="quantity" value="" />
+        </form>
+
+
+        <h2><?php echo $this->translator->translate('PAGE_TITLE_MY_CART'); ?></h2>
+        <hr />
+        <table class="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th><?php
+                        echo $this->translator->translate('ORDER_TABLE_PRODUCT_NAME');
+                    ?></th>
+                    <th width="120"><?php
+                        echo $this->translator->translate('ORDER_TABLE_PRODUCT_PRICE');
+                    ?></th>
+                    <th><?php
+                        echo $this->translator->translate('ORDER_TABLE_PRODUCT_QUANTITY');
+                    ?></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $total = 0;
+                foreach ($this->shoppingCart as $productItem) {
+                    $productInfoLink = $this->url(array(
+                        'module' => 'order',
+                        'controller' => 'products',
+                        'action' => 'info',
+                        'id' => $productItem->id
+                    ));
+
+                    $total += ($productItem->quantity * $productItem->price);
+                ?>
+
+                <tr>
+                    <td>
+                        <img class="pull-left media-object img-rounded" width="45" height="45"
+                            src="<?php echo $this->baseUrl() . $productItem->image; ?>">
+                    </td>
+                    <td>
+                        <a href="<?php echo $productInfoLink; ?>">
+                            <?php echo $productItem->name; ?>
+                        </a>
+                    </td>
+                    <td>
+                        <?php echo money_format('%n', ($productItem->quantity * $productItem->price)); ?>
+                    </td>
+                    <td>
+                        <select
+                            data-product-id="<?php echo $productItem->id; ?>"
+                            name="quantity" data-width="100%"
+                            class="selectpicker quantity-change">
+                            <?php
+                            for ($i = 1; $i <= $this->maxQuantity; $i++) {
+                                $selected = '';
+                                if ($productItem->quantity == $i) {
+                                    $selected = ' selected="selected"';
+                                }
+                                echo '<option value="' . $i . '"' . $selected . '>' . $i . '</option>'."\n";
+                            }
+                            ?>
+                        </select>
+                    </td>
+                    <td>
+                        <a type="button" class="close" href="<?php
+                            echo $this->url(array(
+                                'module' => 'order',
+                                'controller' => 'products',
+                                'action' => 'removefromcart',
+                                'id' => $productItem->id,
+                                'view' => 'confirmcheckout'
+                        )); ?>">&times;</a>
+                    </td>
+                </tr>
+
+                <?php
+                    }
+                ?>
+                <tr>
+                    <td colspan="2"></td>
+                    <td colspan="3">
+                        <span style="font-size: 18px; font-family: Arial"><?php echo money_format('%n', $total); ?>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+        <a type="button" class="btn btn-success btn-block" href="<?php
+            echo $this->url(array(
+                'module' => 'order',
+                'controller' => 'products',
+                'action' => 'confirmaddresses',
+        )); ?>"><?php
+            echo $this->translator->translate('ORDER_CHECKOUT');
+        ?></a>
+        <?php
+        }
+
+        if ($this->shoppingCart == null || count($this->shoppingCart) == 0) {
+            echo '<div class="alert alert-warning">' . $this->translator->translate('PRODUCTS_ORDER_EMPTY') . '</div>';
+        }
+        ?>
+    </div>
+</div>

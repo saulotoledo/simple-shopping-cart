@@ -1,0 +1,117 @@
+<div class="pull-right container-fluid">
+<ul class="nav navbar-nav">
+    <li>
+        <div class="navbar-form navbar-right" role="search">
+            <div class="form-search search-only">
+                <i class="search-icon glyphicon glyphicon-search"></i>
+                <input type="text" id="searchbar" class="form-control search-query">
+                <button type="button" class="btn btn-default"><?php
+                    echo $this->translator->translate('SEARCH_BUTTON');
+                ?></button>
+            </div>
+            <form method="post" name="hidden-search-form" action="<?php
+                echo $this->url(array(
+                    'module' => 'order',
+                    'controller' => 'products',
+                    'action' => 'show',
+                    'id' => null
+                ));
+            ?>">
+                <input type="hidden" name="search" value="" />
+            </form>
+        </div>
+    </li>
+<?php
+if ($this->userHasIdentity) {
+?>
+    <li class="dropdown">
+        <a href="javascript:;" class="dropdown-toggle" id="cart" data-toggle="dropdown">
+            <i class="fa fa-shopping-cart"></i>
+            <span class="order-lenght"></span>
+            <span class="caret"></span>
+        </a>
+        <div class="dropdown-menu pull-right" id="cart-content">
+            <?php
+            if ($this->shoppingCart != null) {
+                foreach ($this->shoppingCart as $productItem) {
+                    $productInfoLink = $this->url(array(
+                        'module' => 'order',
+                        'controller' => 'products',
+                        'action' => 'info',
+                        'id' => $productItem->id
+                    ));
+            ?>
+
+                <div class="media">
+
+                    <a type="button" class="close" href="<?php
+                        echo $this->url(array(
+                        'module' => 'order',
+                        'controller' => 'products',
+                        'action' => 'removefromcart',
+                        'id' => $productItem->id
+                    )); ?>">&times;</a>
+                    <br />
+
+                    <img class="pull-left media-object img-rounded" width="45" height="45"
+                        src="<?php echo $this->baseUrl() . $productItem->image; ?>">
+
+                    <div class="media-body">
+                        <a href="<?php echo $productInfoLink; ?>">
+                            <h4 class="media-heading"><?php echo $productItem->name; ?></h4>
+                        </a>
+                        <p class="list-group-item-text"><?php echo '<span class="quantity">' . $productItem->quantity . '</span> ' . $this->translator->translate('PRODUCT_QUANTITY_SUFFIX'); ?></p>
+                        <p class="list-group-item-text"><?php echo money_format('%n', $productItem->price) . ' ' . $this->translator->translate('PRODUCT_PRICE_SUFFIX'); ?></p>
+                    </div>
+                 </div>
+            </a>
+            <?php
+                }
+            ?>
+            <div class="col-md-12">
+                <a href="<?php
+                    echo $this->url(array(
+                        'module' => 'order',
+                        'controller' => 'products',
+                        'action' => 'confirmcheckout',
+                        'id' => null
+                )); ?>" type="button" class="btn btn-success btn-block"><?php
+                    echo $this->translator->translate('ORDER_CHECKOUT_VERIFY');
+                ?></a>
+            </div>
+
+            <?php
+            }
+
+            if ($this->shoppingCart == null || count($this->shoppingCart) == 0) {
+                echo '<p>' . $this->translator->translate('PRODUCTS_ORDER_EMPTY') . '</p>';
+            }
+            ?>
+        </div>
+    </li>
+<?php
+}
+?>
+    <li class="dropdown">
+        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+            <i class="fa fa-user"></i>
+            <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+            <li>
+                <?php
+                if ($this->userHasIdentity) {
+                    echo '<a href="' . $this->url(array(
+                        'module' => 'auth',
+                        'controller' => 'auth',
+                        'action' => 'logout'
+                    )) . '">' . $this->translator->translate('MENU_LOGOUT') . '</a>';
+                } else {
+                    echo $this->loginForm;
+                }
+                ?>
+            </li>
+        </ul>
+    </li>
+</ul>
+</div>

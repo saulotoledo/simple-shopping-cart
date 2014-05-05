@@ -1,0 +1,12 @@
+{
+	"require" : {
+		"zendframework/zf1-extras" : "1.12.6",
+		"zendframework/zendframework1" : "1.12.6",
+		"easybib/form-decorator" : "0.4.2"
+	},
+	"repositories" : [{
+			"type" : "composer",
+			"url" : "https://packagist.org/"
+		}
+	]
+}

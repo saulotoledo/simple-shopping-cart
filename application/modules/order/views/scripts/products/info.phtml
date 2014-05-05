@@ -1,0 +1,109 @@
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <img class="img-rounded product-image"
+            src="<?php echo $this->baseUrl() . $this->product->image; ?>"
+            width="100%">
+    </div>
+
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+
+        <form action="<?php
+            echo $this->url(array(
+                'module' => 'order',
+                'controller' => 'products',
+                'action' => 'addtocart'
+            ));
+        ?>" id="addToCartForm" method="post">
+            <input type="hidden" name="id" value="<?php echo $this->product->id; ?>" />
+
+            <div class="col-md-12">
+                <?php
+                    foreach ($this->product->categories as $category) {
+                        echo $this->partial('categorybreadcrumb.phtml', array(
+                            'category' => $category,
+                            'renderLinks' => true
+                        ));
+                    }
+                ?>
+            </div>
+
+            <div class="col-md-12 span4 well">
+                <div class="col-md-12">
+                    <h1><?php echo money_format('%n', $this->product->price); ?></h1>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label for="quantity" class="col-sm-4 col-md-4 col-lg-4 control-label">
+                            <?php echo $this->translator->translate('ORDER_PRODUCTPAGE_QUANTITY_LABEL'); ?>
+                        </label>
+
+                        <div class="col-sm-8 col-md-8 col-lg-8">
+                            <select id="quantity" name="quantity" class="selectpicker" data-container="body" data-width="100%">
+                                <?php
+                                for ($i = 1; $i <= $this->maxQuantity; $i++) {
+                                    $selected = '';
+                                    if ($this->quantity == $i) {
+                                        $selected = ' selected="selected"';
+                                    }
+                                    echo '<option value="' . $i . '"' . $selected . '>' . $i . '</option>'."\n";
+                                }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 product-info-quantity">
+                        <?php
+                            if ($this->isAtCart) {
+                                $buttonColorClass = 'primary';
+                                $buttonLabel = $this->translator->translate('ORDER_PRODUCTPAGE_PRODUCT_UPDATE_AT_CART_LABEL');
+                            } else {
+                                $buttonColorClass = 'info';
+                                $buttonLabel = $this->translator->translate('ORDER_PRODUCTPAGE_PRODUCT_ADD_TO_CART_LABEL');
+                            }
+                        ?>
+                        <a href="javascript:;" id="addToCartButton" class="btn btn-block btn-<?php echo $buttonColorClass; ?> btn-add-update-cart" role="button">
+                            <?php echo $buttonLabel; ?>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 text-justify">
+        <?php echo $this->product->description; ?>
+        <br /><br />
+    </div>
+    <div class="col-md-6">
+        <?php
+        if (count($this->product->features) > 0) {
+        ?>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <?php echo $this->translator->translate('ORDER_PRODUCTPAGE_FEATURES_LABEL'); ?>
+                </div>
+                <div class="panel-body">
+                    <ul>
+                        <?php
+                        $end = ';';
+                        for ($i = 0; $i < count($this->product->features); $i++) {
+                            if ($i == count($this->product->features) - 1) {
+                                $end = '.';
+                            }
+
+                            echo "<li>{$this->product->features[$i]}{$end}</li>";
+                        }
+                        ?>
+                    </ul>
+                </div>
+            </div>
+        <?php
+        }
+        ?>
+    </div>
+</div>

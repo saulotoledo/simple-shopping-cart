@@ -1,0 +1,123 @@
+<div class="page-header">
+    <h3><?php
+        if (isset($this->category)) {
+            echo $this->partial('categorybreadcrumb.phtml', array(
+                'category' => $this->category,
+                'renderLinks' => true
+            ));
+        } else {
+            echo $this->escape($this->translator->translate('PAGE_TITLE_PRODUCTS'));
+        }
+    ?></h3>
+</div>
+<form id="productViewForm" action="" method="post">
+<input type="hidden" id="order" name="order" value="<?php echo $this->order; ?>" />
+<input type="hidden" id="orderdir" name="orderdir" value="<?php echo $this->orderDir; ?>" />
+<input type="hidden" id="viewtype" name="viewtype" value="<?php echo $this->viewType; ?>" />
+<?php
+
+if (count($this->products) > 0) {
+
+?>
+<div class="row">
+    <div class="col-sm-12 col-md-12 text-right">
+
+        <div class="btn-group view-type-change">
+            <button type="button" data-view-type="icon" class="btn btn-default<?php
+                if ($this->viewType == 'icon') {
+                    echo ' active';
+                }
+            ?>">
+                <span class="glyphicon glyphicon-th"></span>
+            </button>
+            <button type="button" data-view-type="list" class="btn btn-default<?php
+                if ($this->viewType == 'list') {
+                    echo ' active';
+                }
+            ?>">
+                <span class="glyphicon glyphicon-th-list"></span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6 col-md-6">
+        <label for="orderSelect"><?php
+            echo $this->translator->translate('ORDER_BY');
+        ?></label>
+        <select id="orderSelect" name="orderSelect" class="selectpicker show-tick form-control">
+            <option value="name"><?php
+                echo $this->translator->translate('ORDER_BY_VALUE_NAME');
+            ?></option>
+            <option value="price_asc"<?php echo ($this->order . '_' . $this->orderDir == 'price_asc') ? ' selected="selected"' : ''; ?>><?php
+                echo $this->translator->translate('ORDER_BY_VALUE_PRICE_ASC');
+            ?></option>
+            <option value="price_desc"<?php echo ($this->order . '_' . $this->orderDir == 'price_desc') ? ' selected="selected"' : ''; ?>><?php
+                echo $this->translator->translate('ORDER_BY_VALUE_PRICE_DESC');
+            ?></option>
+        </select>
+        <br />
+    </div>
+
+    <div class="col-sm-6 col-md-6">
+        <label for="limitSelect"><?php
+            echo $this->translator->translate('ITEMS_PER_PAGE');
+        ?></label>
+        <select id="limitSelect" name="limit" class="selectpicker show-tick form-control">
+            <?php
+            for ($i = 10; $i <= 100; $i += 10) {
+
+                $selected = '';
+                if ($this->paginationLimit == $i) {
+                    $selected = ' selected="selected"';
+                }
+
+                echo '<option value="' . $i . '"' . $selected . '>' . $i . '</option>'."\n";
+            }
+            ?>
+        </select>
+        <br />
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+
+<?php
+    foreach ($this->products as $product) {
+        $productInfoLink = $this->url(array(
+            'module' => 'order',
+            'controller' => 'products',
+            'action' => 'info',
+            'id' => $product->id
+        ));
+
+        if ($this->viewType == 'icon') {
+            $filename = 'show-products-icon.phtml';
+        } else {
+            $filename = 'show-products-list.phtml';
+        }
+
+        echo $this->partial($filename, array(
+            'product' => $product,
+            'productInfoLink' => $productInfoLink
+        ));
+    }
+
+    if (isset($this->paginator)) {
+        echo $this->paginationControl($this->paginator, 'Sliding', 'pagination.phtml');
+    }
+?>
+
+    </div>
+</div>
+
+<?php
+}
+?>
+</form>
