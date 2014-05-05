@@ -531,34 +531,38 @@ class Order_ProductsController extends Zend_Controller_Action
     public function checkoutAction()
     {
         $shoppingCart = Auth_Model_SystemAuth::getInstance()->getAuthVariable('shoppingCart');
-        if ($shoppingCart != null && count($shoppingCart->getProducts()) > 0) {
+        if ($shoppingCart->getShippingAddressId() == null) {
+            $this->_helper->redirector('confirmcheckout', 'products', 'order');
+        } else {
+            if ($shoppingCart != null && count($shoppingCart->getProducts()) > 0) {
 
-            $shoppingCart->save();
-            $productsList = $shoppingCart->getProducts();
+                $shoppingCart->save();
+                $productsList = $shoppingCart->getProducts();
 
-            $html = new Zend_View();
-            $html->translator = Zend_Registry::get('translate');
-            $html->username = Zend_Registry::get('loggedInUser')->getName();
-            $html->mailTitle = Zend_Registry::get('translate')->_('CHECKOUT_MAIL_TITLE');
-            $html->setScriptPath(APPLICATION_PATH . '/modules/order/views/emails/');
-            $html->assign('products', $this->prepareShoppingCartProducts($productsList));
+                $html = new Zend_View();
+                $html->translator = Zend_Registry::get('translate');
+                $html->username = Zend_Registry::get('loggedInUser')->getName();
+                $html->mailTitle = Zend_Registry::get('translate')->_('CHECKOUT_MAIL_TITLE');
+                $html->setScriptPath(APPLICATION_PATH . '/modules/order/views/emails/');
+                $html->assign('products', $this->prepareShoppingCartProducts($productsList));
 
-            $bodyText = $html->render('template.phtml');
+                $bodyText = $html->render('template.phtml');
 
-            $mail = new Zend_Mail(Zend_Registry::get('systemConfig')->mail->encoding);
-            $mail->setBodyHtml($bodyText);
-            $mail->addTo(
-                Zend_Registry::get('loggedInUser')->getEmail(),
-                Zend_Registry::get('loggedInUser')->getName()
-            );
-            $mail->setSubject(Zend_Registry::get('translate')->_('CHECKOUT_MAIL_TITLE'));
-            $mail->send();
-            $this->view->messageType = 'success';
-            $this->view->message = Zend_Registry::get('translate')->_('PRODUCTS_CHECKOUT_SUCCESS');
+                $mail = new Zend_Mail(Zend_Registry::get('systemConfig')->mail->encoding);
+                $mail->setBodyHtml($bodyText);
+                $mail->addTo(
+                    Zend_Registry::get('loggedInUser')->getEmail(),
+                    Zend_Registry::get('loggedInUser')->getName()
+                );
+                $mail->setSubject(Zend_Registry::get('translate')->_('CHECKOUT_MAIL_TITLE'));
+                $mail->send();
+                $this->view->messageType = 'success';
+                $this->view->message = Zend_Registry::get('translate')->_('PRODUCTS_CHECKOUT_SUCCESS');
 
-            Auth_Model_SystemAuth::getInstance()->setAuthVariable('shoppingCart', null);
+                Auth_Model_SystemAuth::getInstance()->setAuthVariable('shoppingCart', null);
+            }
+
+            $this->_forward('show', 'products', 'order');
         }
-
-        $this->_forward('show', 'products', 'order');
     }
 }
